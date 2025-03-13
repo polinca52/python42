@@ -55,7 +55,7 @@ user1.update_info()
 user1.get_info()'''
 
 #2
-class Cite:
+'''class Cite:
     def __init__(self):
         self.Human = None
         self.country = None
@@ -101,4 +101,167 @@ user1.set_country()
 
 
 user1.get_info()
-user1.update_info()
+user1.update_info()'''
+
+#class Fraction:
+#    def __init__(self, numerator = None, denominator = None):
+#        self.numerator = numerator
+#        self.denominator = denominator
+#
+#    def set_fraction(self):
+#        self.numerator = int(input('введите знаменатель '))
+#        self.denominator = int(input('введите числитель '))
+#
+#    def get_numerator(self):
+#        print(f'числитель: {self.numerator}')
+#
+#    def get_denominator(self):
+#        print(f'знаменатель: {self.denominator}')
+#
+#    def reduction(self, numerator, denominator):
+#        for dit in range(min(numerator, denominator), 1, -1):
+#            if numerator % dit == 0 and denominator % dit == 0:
+#                print(dit)
+#                denominator = denominator // dit
+#                numerator = numerator // dit
+#        self.denominator = denominator 
+#        self.numerator = numerator 
+#
+#
+#    def summ(self):
+#        other_numerator = int(input('введите знаменатель 2ой дроби '))
+#        other_denominator = int(input('введите числитель 2ой дроби '))
+#        summ_numerator = self.numerator * other_denominator + self.denominator * other_numerator
+#        summ_denominator = self.denominator * other_denominator
+#        self.reduction(summ_numerator, summ_denominator)
+#      
+#        
+#
+#    def minus(self):
+#        other_numerator = int(input('введите знаменатель 2ой дроби '))
+#        other_denominator = int(input('введите числитель 2ой дроби '))
+#        summ_numerator = self.numerator * other_denominator - self.denominator * other_numerator
+#        summ_denominator = self.denominator * other_denominator
+#        self.reduction(summ_numerator, summ_denominator)
+#      
+#
+#    def multplay(self):
+#        other_numerator = int(input('введите знаменатель 2ой дроби '))
+#        other_denominator = int(input('введите числитель 2ой дроби '))
+#        summ_numerator = self.numerator  * other_numerator
+#        summ_denominator = self.denominator * other_denominator
+#        self.reduction(summ_numerator, summ_denominator)
+#    
+#    def division(self):
+#        other_numerator = int(input('введите знаменатель 2ой дроби '))
+#        other_denominator = int(input('введите числитель 2ой дроби '))
+#        summ_numerator = self.numerator * other_denominator 
+#        summ_denominator = self.denominator * other_numerator
+#        self.reduction(summ_numerator, summ_denominator)
+#
+#
+#
+#first_fraction = Fraction(3, 4)
+#first_fraction.multplay()
+#first_fraction.get_numerator()
+#first_fraction.get_denominator()
+
+
+#ИНКАПСУЛЯЦИЯ
+# процедурный метод
+stack_list = []
+
+def add(stack, elemnt):
+    stack.append(elemnt)
+    return stack
+
+def delete(stack):
+    element = stack[-1]
+    stack.pop(-1)
+    return element
+
+add(stack_list, 1)
+add(stack_list, 2)
+print(add(stack_list, 3))
+print(delete(stack_list))
+print(delete(stack_list))
+print(delete(stack_list))
+
+#ООП
+#class Stack:
+#    def __init__(self):
+#        self.stack_list = []
+#
+#    def add(self, elemnt):
+#        self.stack_list.append(elemnt)
+#    
+#     
+#    def delete(self):
+#        self.element = self.stack_list[-1]
+#        self.stack_list.pop(-1)
+#
+#my_stack = Stack()
+#my_stack.add(1)
+#my_stack.add(2)
+#my_stack.add(3)
+#print(my_stack.stack_list)
+#my_stack.delete()
+#print(my_stack.stack_list)
+#my_stack.delete()
+#print(my_stack.stack_list)
+#my_stack.delete()
+
+#наследование
+class MyClass:
+    count = 0
+    def __init__(self, name):
+        self.name = name 
+        MyClass.count += 1
+        self.id = MyClass.count
+
+obj1 = MyClass('1ый')
+obj2 = MyClass('2ый')
+obj3 = MyClass('3ый')
+print(MyClass.count, obj1.id, obj2.id, obj3.id)
+
+#ПОЛИМОРФИЗМ
+#перегрузка метода с разным типом данных
+class Auto:
+    def __init__(self, manufacturer, model):
+        self.manufacturer = manufacturer
+        self.model = model
+    def __str__(self):
+        return f'Auto {self.manufacturer}, model {self.model}'
+    
+example_auto = Auto('lada', 2107)
+example_auto2 = Auto('tesla', 'E')
+print(example_auto)
+print(example_auto2)
+
+#перегрузка с разным количеством параметров
+#условия: вводят данные стороны, нужно посчитать площадь фигуры. иначе вывести сообщение об ошибки
+class Figure:
+    def __init__(self, *l):
+        self.lenght = l
+
+    def s(self):
+        if len(self.lenght) == 3:
+            p = sum(self.lenght)/2
+            a = self.lenght[0]
+            b = self.lenght[1]
+            c = self.lenght[2]
+            self.square = (p *(p-a)*(p-b)*(p-c))**0.5
+        elif len(self.lenght) == 4:
+            a = list(set(self.lenght))[0]
+            b = list(set(self.lenght))[1]
+            self.square = a * b
+        else:
+            print('некорректнфй ввод')
+
+figure = Figure(25, 25, 49)
+figure2 = Figure(5, 5, 2, 2)
+figure.s()
+figure2.s()
+
+print(figure.square, figure2.square)
+
