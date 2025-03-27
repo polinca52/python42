@@ -224,36 +224,34 @@ print(pet.__dict__, pet.show(),pet.get_type(), pet.sound(), sep = '\n')
 
 #вариант 2
 
-class Employer:
-    def __init__(self, name, year, pol):
-        self.name=name
-        self.year =year
-        self.pol = pol
-    '''Employer'''
-    def print(self):
-        return f'This is {str(self.__class__)[17:-2]} class'
-    def __str__(self):
-        return f"меня зовут {self.name}"
-    def __int__(self):
-         return self.year
-
-    
-class President(Employer):
-    def __init__(self, name, year, pol):
-        super().__init__(name, year, pol)
-
-class Manager(Employer):
-    def __init__(self, name, year, pol):
-        super().__init__(name, year, pol)
-
-class Worker(Employer):
-    def __init__(self, name, year, pol):
-        super().__init__(name, year, pol)
-
-user1 = President('Иван', 32, 'm')
-user2 = Manager('катя', 20, 'ж')
-user3 = Worker('оно', 11, 'ср')
-for user in [user1, user2, user3]:
-    print(int(user))
-
-
+#class Employer:
+#    def __init__(self, name, year, pol):
+#        self.name=name
+#        self.year =year
+#        self.pol = pol
+#    '''Employer'''
+#    def print(self):
+#        return f'This is {str(self.__class__)[17:-2]} class'
+#    def __str__(self):
+#        return f"меня зовут {self.name}"
+#    def __int__(self):
+#         return self.year
+#
+#    
+#class President(Employer):
+#    def __init__(self, name, year, pol):
+#        super().__init__(name, year, pol)
+#
+#class Manager(Employer):
+#    def __init__(self, name, year, pol):
+#        super().__init__(name, year, pol)
+#
+#class Worker(Employer):
+#    def __init__(self, name, year, pol):
+#        super().__init__(name, year, pol)
+#
+#user1 = President('Иван', 32, 'm')
+#user2 = Manager('катя', 20, 'ж')
+#user3 = Worker('оно', 11, 'ср')
+#for user in [user1, user2, user3]:
+#    print(int(user))
