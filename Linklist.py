@@ -55,6 +55,7 @@ class Linklist:
             if current_node.next_node.value == value_from_remove:
                 current_node.next_node = current_node.next_node.next_node
                 del current_node.next_node
+                current_node.next_node = current_next_node
                 self.lenght -= 1
                 return'элемент удален'
             current_node =current_node.next_node
@@ -80,7 +81,7 @@ my_array.my_append(52)
 my_array.my_append(-5)
 my_array.my_append(0)
 my_array.my_append(5342)
-#print(my_array.my_remove())
+print(my_array.my_remove())
 #print(my_array)
 
 #array= input('Введите числа через поробел')
