@@ -90,7 +90,7 @@ class Node:
 class PriorityQueue:
     head = None
     length = 0
-    max_length = 0
+    max_length = 4
 
     def show(self):
         if self.head is None:
@@ -98,9 +98,12 @@ class PriorityQueue:
         else:
             line = f'Очередь: \n'
             current_node = self.head
-            while current_node.next_noed != None:
-                line += f'#{current_node.priority}# {current_node.next_node}'
-                return line
+            while current_node.next_node != None:
+                line += f'#{current_node.priority}# {current_node.task}'
+                current_node = current_node.next_node
+            line += f'#{current_node.priority}# {current_node.task}'
+            print(line)
+            return line
             
     def insert_with_priority(self, task, priority):
         #new_node = Node()
@@ -111,6 +114,7 @@ class PriorityQueue:
             current_node = self.head
             if priority < current_node.priority:
                 current_node.prev_node = Node(task, priority,next_node=current_node)
+                self.head = current_node.prev_node
                 self.length += 1
                 return f'элемент добавлен'
             while current_node.next_node != None:
@@ -121,16 +125,50 @@ class PriorityQueue:
                     current_node.prev_node.next_node = new_node
                     current_node.prev_node = new_node
                     self.length += 1
-                    break
+                    return f'элемент добавлен'
                 else:
                     current_node = current_node.next_node
-            current_node.prev_node = Node(task, priority,prev_node=current_node)
+
+            if priority < current_node.priority:
+                current_node.prev_node.next_node =   current_node.prev_node = Node(task, priority,next_node=current_node, prev_node = current_node.prev_node)
+            else:
+                current_node.next_node = Node(task, priority, prev_node=current_node)
+          
+            #добавить связь с предидущем
+
             self.length += 1
             return f'элемент добавлен'
         else:
             return f'добавление не возможно очередь заполнена'
+        
+    
+    def pull_highest_priority_element(self):
+        try:
+            if self.length > 1:
+                self.head = self.head.next_node
+                del self.head.prev_node
+            else:
+                del self.head
+            self.length -= 1
+        except:
+            print('очередь пуста', self.length)
+    
+    def peek(self):
+        if self.length != 0:
+            print(f'#{self.head.priority}# {self.head.task}')
+            return f'#{self.head.priority}# {self.head.task}'
+        else:
+            print('очередь пуста')
 
 tobo = PriorityQueue()
-tobo.show()
-tobo.insert_with_priority()
-                    
+
+tobo.insert_with_priority('задание 1', 2)
+tobo.insert_with_priority('задание 2', -1)
+tobo.insert_with_priority('задание 3', 1.2)
+tobo.insert_with_priority('задание 4', 5)
+tobo.insert_with_priority('задание 5', 2.2)
+tobo.pull_highest_priority_element()
+tobo.pull_highest_priority_element()
+
+tobo.peek()
+#tobo.show()                    
