@@ -48,79 +48,97 @@
 #данных, редактирование данных, сохранение и загрузку
 #данных (используя упаковку и распаковку).
 
-def add_data(country_dict):
-    data = input('введите страну и столицу через пробел')
-    country, capital = data.split(' ')
-    if country in country_dict.keys():
-        print('чувак такая страна есть')
-    else:
-        country_dict[country] = capital
-    return country_dict
-
-def delete_date(country_dict):
-    data = input('введите страну для удаления')
-    if data in country_dict.keys():
-        del country_dict[data]
-        print(f'cстрана {data} удалена')
-    else:
-        print('чувак такой странны нет')
-    return country_dict
-
-def searche_data(country_dict):
-    data = input('введите страну или столицу дл япоиска')
-    for country, capital in country_dict.items():
-        if data == country or data == capital:
-            print(f'результат поиска: \n {country} {capital}')
-            break
-    else:
-        print('нет')
-    return country_dict
-
-def update_data(country_dict):
-    data = input('введите страну и новую столицу ')
-    country, capital = data.split(' ')
-    country_dict[country] = capital
-    return country_dict
-
-def save_data(country_dict):
-    data = ''
-    for key, value in country_dict.items():
-        data += f'{key}:{value}\n'
-    with open('country_dict.txt', 'w') as file:
-        file.write(data) 
-    return country_dict      
-
-def load_data(country_dict):
-    with open('country_dict.txt', 'r') as file:
-        for line in file:
-            country, capital = line.split(':')
-            country_dict[country] = capital
-    return country_dict
-
-
-
-    
-
-
-country_dict ={}
-while True:
-    print(country_dict)
-    choice = int(input('База стран и столиц\nменю:\n1-Добавить\n2-удалить\n3-поиск\n4-редоктирование\n5-сохранение\n6-загрузка\n0 - выход'))
-    if choice == 0:
-        break
-    elif choice == 1:
-         add_data(country_dict)
-    elif choice == 2:
-        delete_date(country_dict)
-    elif choice == 3:
-        searche_data(country_dict)
-    elif choice == 4:
-        update_data(country_dict)
-    elif choice == 5:
-        save_data(country_dict)
-    elif choice == 6:
-        load_data(country_dict)
+#def add_data(country_dict):
+#    data = input('введите страну и столицу через пробел')
+#    country, capital = data.split(' ')
+#    if country in country_dict.keys():
+#        print('чувак такая страна есть')
+#    else:
+#        country_dict[country] = capital
+#    return country_dict
+#
+#def delete_date(country_dict):
+#    data = input('введите страну для удаления')
+#    if data in country_dict.keys():
+#        del country_dict[data]
+#        print(f'cстрана {data} удалена')
+#    else:
+#        print('чувак такой странны нет')
+#    return country_dict
+#
+#def searche_data(country_dict):
+#    data = input('введите страну или столицу дл япоиска')
+#    for country, capital in country_dict.items():
+#        if data == country or data == capital:
+#            print(f'результат поиска: \n {country} {capital}')
+#            break
+#    else:
+#        print('нет')
+#    return country_dict
+#
+#def update_data(country_dict):
+#    data = input('введите страну и новую столицу ')
+#    country, capital = data.split(' ')
+#    country_dict[country] = capital
+#    return country_dict
+#
+#def save_data(country_dict):
+#    data = ''
+#    for key, value in country_dict.items():
+#        data += f'{key}:{value}\n'
+#    with open('country_dict.txt', 'w') as file:
+#        file.write(data) 
+#    return country_dict      
+#
+#def load_data(country_dict):
+#    with open('country_dict.txt', 'r') as file:
+#        for line in file:
+#            country, capital = line.split(':')
+#            country_dict[country] = capital
+#    return country_dict
+#
+#
+#
+#    
+#
+#
+#country_dict ={}
+#while True:
+#    print(country_dict)
+#    choice = int(input('База стран и столиц\nменю:\n1-Добавить\n2-удалить\n3-поиск\n4-редоктирование\n5-сохранение\n6-загрузка\n0 - выход'))
+#    if choice == 0:
+#        break
+#    elif choice == 1:
+#         add_data(country_dict)
+#    elif choice == 2:
+#        delete_date(country_dict)
+#    elif choice == 3:
+#        searche_data(country_dict)
+#    elif choice == 4:
+#        update_data(country_dict)
+#    elif choice == 5:
+#        save_data(country_dict)
+#    elif choice == 6:
+#        load_data(country_dict)
 
         
+class Music:
+    music_dict = {}
 
+    def add_band(self, add_band):
+        band = Band(add_band)
+        self.music_dict[band.name] = band.dict_phia
+
+
+class Band:
+    def __init__(self, name):
+        self.name = name
+        self.disc_phia = []
+    
+    def add_album(self, name_album):
+        self.disc_phia.append(name_album)
+
+spotify = Music()
+spotify.add_band('иванушки')
+print()
 
