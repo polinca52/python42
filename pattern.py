@@ -115,15 +115,32 @@ class Logger:
     def log_extrem_digits(self, maxx, minx):
         self.logging(f'max:{maxx}, min {minx}')
 
+    def log_render(self, list_digits):
+        self.logging(f'Выполнен рендер массива {list_digits}, макс. элемента {max(list_digits)} и миню элемента {min(list_digits)}')
+
 class Digits:
     def __init__(self, path = 'Digits.txt', logger = None):
         array = input('введите числа через пробел')
+        self.path = path
+        self.logger = logger
         self.list_digits = list(map(int, array.split(' ')))
-        with open(path, 'a') as file:
+        with open(path, 'a', encoding='utf-8') as file:
             for digit in self.list_digits:
                 file.write(str(digit)+'\n')
         logger.log_input_digits()
 
+    def grt_extrem(self):
+        maxx = max(self.list_digits)
+        minx = min(self.list_digits)
+        with open(self.path, 'a', encoding='utf-8') as file:
+            file.write(f'максимальный элемент {maxx}, минимальный {minx}' )
+        self.logger.log_extrem_digits(maxx, minx)
+        
+    def render(self):
+        print(f'массив чисел: {self.list_digits}. \nMax {max(self.list_digits)}, min: {min(self.list_digits)}')
+        self.logger.log_render(self.list_digits)
 logger = Logger()
 print(logger)
 array = Digits(logger=logger)
+array.grt_extrem()
+array.render()
