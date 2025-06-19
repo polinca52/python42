@@ -31,15 +31,46 @@ with sql.connect('python42/SQLite/Journal.db')as db:
 #    stds = cursor.fetchall()
 #    for std in stds :
 #        print(std)
-##TASK 2
+##TASK 3
 #    cursor.execute('''
 #SELECT name, age FROM Students WHERE age >= 18 and age >= 27 ''')
 #    stds = cursor.fetchall()
 #    for std in stds :
 #        print(std)
+##TASK 4
+#    cursor.execute('''
+#SELECT name, id FROM Students WHERE name = 'Ivan' ''')
+#    stds = cursor.fetchall()
+#    for std in stds :
+#        print(std)
+##TASK 5
+#    cursor.execute('''
+#SELECT name, phone FROM Students WHERE phone LIKE '%888%'''')
+#    stds = cursor.fetchall()
+#    for std in stds :
+#        print(std)
+##TASK 6
+#    cursor.execute('''
+#SELECT name, mail FROM Students WHERE mail LIKE 'g%' ''')
+#    stds = cursor.fetchall()
+#    for std in stds :
+#        print(std)
 ##TASK 2
-    cursor.execute('''
-SELECT name, id FROM Students WHERE name = 'Ivan' ''')
-    stds = cursor.fetchall()
-    for std in stds :
-        print(std)
+##TASK 2.1
+#    cursor.execute('''
+#SELECT name, MIN(aver_value) FROM Students ''')
+#    stds = cursor.fetchall()
+#    for std in stds :
+#        print(std)
+##TASK 2.3
+#    cursor.execute('''
+#SELECT DISTINCT city, COUNT(name) FROM Students GROUP BY city ''')
+#    stds = cursor.fetchall()
+#    for std in stds :
+#        print(std)
+##TASK 2.4
+#    cursor.execute('''
+#SELECT DISTINCT counntry, COUNT(name) FROM Students GROUP BY counntry ''')
+#    stds = cursor.fetchall()
+#    for std in stds :
+#        print(std)

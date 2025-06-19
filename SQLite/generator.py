@@ -26,7 +26,38 @@ def create_student():
     #max_theme
     max_theme = choice(list_theme)
     return name, age, city, counntry, mail, phone, group, aver_value, min_theme, max_theme
-list_student = []
-for i in range(1000):
-    list_student.append(create_student())
-print(list_student)
+
+def create_departament():
+    list = []
+    for i in range(1,6):        
+        building = i
+        name = ['Хирургия', 'Психиатор', 'Морг', 'Педиатрия', 'админка', 'тех.поддержка'][i-1]
+        list.append([building, name])
+    return list
+
+def create_doctors():
+    list_name =[ "Alexei", "Ivan", "Dmitry", "Sergey", "Andrey", "Vladimir", "Mikhail", "Nikolay", "Yuri", "Viktor", "Pavel", "Oleg", "Artem", "Kirill", "Roman", "Egor", "Vasily", "Gennady", "Leonid", "Fedor", "Semyon", "Timur", "Valery", "Yevgeny", "Vladislav", "Gleb", "Ilya"]
+    name = choice(list_name)
+    phone = '+7'+ str(randint(1000000000, 9999999999))
+    salary = randint(17_500, 300_500)
+    return name, phone,salary
+
+def create_wards():
+    list = []
+    for i in range(1,6):
+        buildig = i
+        for y in range(1,10):
+            floor =y
+            for x in range(10):              
+                number = str(floor) + str(x)
+                list.append([buildig,floor, int(number)])
+    return list
+
+list_deportament = create_departament()
+
+list_doctors = []
+for i in range(29):
+    list_doctors.append(create_doctors())
+
+list_wards = create_wards()
+hospital_info = (list_deportament, list_doctors, list_wards)
